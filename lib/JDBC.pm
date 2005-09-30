@@ -56,6 +56,11 @@ our @EXPORT_OK = qw(cast caught study_classes);
 
 our $debug = $ENV{PERL_JDBC_DEBUG} || 0;
 
+# Could use package aliasing (*{$alias . "::"} = \*{$orig . "::"}) to shortcut these
+# so $ResultSet::FOO would work, but we'd have to pollute ResultSet:: globally.
+# Probably best to "use JDBC qw(:ResultSet);" and have that import all the
+# java.sql.ResultSet.* constants (defined scalars with all-caps names)
+
 #java.sql.ParameterMetaData 
 my @classes = (qw(
 java.sql.Array 
@@ -102,6 +107,7 @@ javax.sql.XAConnection
 javax.sql.XADataSource 
 
 ));
+
 warn "studying @classes\n" if $debug;
 study_classes(\@classes, 'main');
 
@@ -111,8 +117,11 @@ warn "running\n" if $debug;
 
 =head2 load_driver
 
-The JDBC->load_driver($driver_class) method is used to load a driver class.
-It's equivalent to the common Java idiom for loading driver classes:
+The load_driver() method is used to load a driver class.
+
+  JDBC->load_driver($driver_class)
+
+is equivalent to the Java:
 
   java.lang.Class.forName(driver_class).newInstance();
 
@@ -137,7 +146,7 @@ sub getDrivers {
 
 =head2 study_classes
 
-The cast(), caught(), and study_classes() functions of Inline::JAVA are also
+The cast(), caught(), and study_classes() functions of Inline::Java are also
 optionally exported by the JDBC module.
 
 =cut
@@ -149,14 +158,19 @@ optionally exported by the JDBC module.
 
 __END__
 
+=head1 SEE ALSO
+=head1 SEE ALSO
+
+L<Inline::Java>
+
 =head1 AUTHOR
 
 Tim Bunce, C<< <Tim.Bunce@pobox.com> >>
 
 =head1 BUGS
 
-Firstly try to determine if the problem is related to JDBC or, more likely, the
-underlying Inline::Java module.
+Firstly try to determine if the problem is related to the JDBC module itself
+or, more likely, the underlying Inline::Java module.
 
 Please report any bugs or feature requests for JDBC to
 C<bug-jdbc@rt.cpan.org>, or through the web interface at
@@ -164,9 +178,17 @@ L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=JDBC>.
 I will be notified, and then you'll automatically be notified of progress on
 your bug as I make changes.
 
-Please report any bugs or feature requests for Inline::Java to XXX
+Please report any bugs or feature requests for Inline::Java to the Inline::Java
+mailing list.
+
+C<Inline::Java>'s mailing list is <inline@perl.org>.
+To subscribe, send an email to <inline-subscribe@perl.org>
+
+C<Inline::Java>'s home page is http://inline.perl.org/java/
 
 =head1 ACKNOWLEDGEMENTS
+
+Thanks to Patrick LeBoutillier for creating Inline::Java.
 
 =head1 COPYRIGHT & LICENSE
 

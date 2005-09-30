@@ -12,7 +12,7 @@ pass "driver class loaded";
 my $con = JDBC->getConnection($::JDBC_DRIVER_URL, "test", "test");
 
 my $s1 = $con->createStatement();
-print "Statement:  $s\n";
+print "Statement:  $s1\n";
 
 $s1->executeUpdate("create table foo (foo int, bar varchar(200), primary key (foo))");
 $s1->executeUpdate("insert into foo (foo, bar) values (42,'notthis')");
@@ -21,7 +21,7 @@ my $rs = $s1->executeQuery("select foo, bar from foo");
 while ($rs->next()) {
     my $foo = $rs->getInt(1);
     my $bar = $rs->getString(2);
-    warn "row: foo=$foo, bar=$bar\n";
+    print "row: foo=$foo, bar=$bar\n";
 }
 
 my $s2 = $con->createStatement(
