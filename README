@@ -2,7 +2,7 @@ JDBC
 
 The JDBC module provides an interface to Java JDBC using Inline::Java.
 
-You'll need to install and test Inline::Java before you can use this module.
+You'll need to install and test Inline::Java (>= 0.50) before you can use this module.
 
 INSTALLATION
 
@@ -13,6 +13,13 @@ To install this module, run the following commands:
     ./Build test
     ./Build install
 
+Unless you have org.apache.derby.jdbc already in your CLASSPATH you'll need to
+modify your CLASSPATH environment variable to include the Derby pure-java
+database driver because that's what the tests use.
+
+The Derby database driver is bundled with the JDBC module in the drivers
+directory. You can set your CLASSPATH environment variable to include the
+full path to the drivers/db-derby-10.1.1.0.jar file.
 
 COPYRIGHT AND LICENCE
 
