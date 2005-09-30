@@ -1,0 +1,22 @@
+JDBC
+
+The JDBC module provides an interface to Java JDBC using Inline::Java.
+
+You'll need to install and test Inline::Java before you can use this module.
+
+INSTALLATION
+
+To install this module, run the following commands:
+
+    perl Build.PL
+    ./Build
+    ./Build test
+    ./Build install
+
+
+COPYRIGHT AND LICENCE
+
+Copyright (C) 2005 Tim Bunce
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
