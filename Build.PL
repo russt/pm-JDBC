@@ -11,7 +11,7 @@ my $builder = Module::Build->new(
         'Test::More'   => 0,
         'Inline::Java' => '0.50',
     },
-    add_to_cleanup      => [ 'JDBC-*' ],
+    add_to_cleanup      => [ 'JDBC-*', '_Inline', 'derbydb', 'derby.log' ],
 );
 
 $builder->create_build_script();

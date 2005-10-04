@@ -1,9 +1,16 @@
 Build.PL
 Changes
-MANIFEST
-META.yml # Will be created by "make dist"
-README
+drivers/db-derby-10.1.1.0.jar
 lib/JDBC.pm
+MANIFEST
+MANIFEST.SKIP
+META.yml
+README
 t/00-load.t
+t/01-driver.t
+t/02-connect.t
+t/02-const.t
+t/03-statement.t
 t/pod-coverage.t
 t/pod.t
+t/test_init.pl

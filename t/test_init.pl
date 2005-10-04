@@ -35,6 +35,6 @@ $SIG{__DIE__} = sub {
         # $@->printStrackTrace; # No public method 'printStrackTrace' defined for class 'main::java::lang::NoClassDefFoundError' at test.pl line 20
         $msg = sprintf "%s (%s)", $@->toString, $msg;
         die $msg;
-};
+} if 0;
 
 1;
