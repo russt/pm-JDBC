@@ -12,5 +12,3 @@ pass "driver class loaded";
 my $con = PDBC->getConnection($::PDBC_DRIVER_URL, "test", "test");
 ok ref $con, "got ref";
 can_ok $con, 'createStatement';
-
-$con->foo;
