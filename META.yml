@@ -1,8 +1,0 @@
---- #YAML:1.0
-name: JDBC
-version: 0.01
-author:
-  - Tim Bunce <Tim.Bunce@pobox.com>
-abstract: Perl 5 interface to Java JDBC (via Inline::Java)
-license: perl
-generated_by: Module::Build version 0.2611, without YAML.pm
