@@ -3,15 +3,15 @@ use warnings;
 use Module::Build;
 
 my $builder = Module::Build->new(
-    module_name         => 'PDBC',
+    module_name         => 'JDBC',
     license             => 'perl',
     dist_author         => 'Tim Bunce <Tim.Bunce@pobox.com>',
-    dist_version_from   => 'lib/PDBC.pm',
+    dist_version_from   => 'lib/JDBC.pm',
     requires => {
-        'JDBC'         => 0,
         'Test::More'   => 0,
+        'Inline::Java' => '0.50',
     },
-    add_to_cleanup      => [ ],
+    add_to_cleanup      => [ 'JDBC-*', '_Inline', 'derbydb', 'derby.log' ],
 );
 
 $builder->create_build_script();

@@ -4,9 +4,9 @@ use Test::More tests => 6;
 
 BEGIN { require "t/test_init.pl" }
 
-use PDBC qw(:ResultSet);
+use JDBC qw(:ResultSet);
 
-PDBC->load_driver($::PDBC_DRIVER_CLASS);
+JDBC->load_driver($::JDBC_DRIVER_CLASS);
 pass "driver class loaded";
 
 ok $java::sql::ResultSet::TYPE_FORWARD_ONLY;

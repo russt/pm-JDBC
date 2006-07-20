@@ -57,4 +57,9 @@ sub prepareStatement {
     return $stmt;
 }
 
+
+sub foo {
+    warn "foo";
+}
+
 1;

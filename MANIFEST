@@ -1,6 +1,7 @@
 Build.PL
 Changes
-lib/PDBC.pm
+drivers/db-derby-10.1.1.0.jar
+lib/JDBC.pm
 MANIFEST
 MANIFEST.SKIP
 META.yml

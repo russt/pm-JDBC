@@ -4,11 +4,12 @@ use Test::More tests => 3;
 
 BEGIN { require "t/test_init.pl" }
 
-use PDBC;
+use JDBC;
 
-PDBC->load_driver($::PDBC_DRIVER_CLASS);
+JDBC->load_driver($::JDBC_DRIVER_CLASS);
 pass "driver class loaded";
 
-my $con = PDBC->getConnection($::PDBC_DRIVER_URL, "test", "test");
+my $con = JDBC->getConnection($::JDBC_DRIVER_URL, "test", "test");
 ok ref $con, "got ref";
 can_ok $con, 'createStatement';
+

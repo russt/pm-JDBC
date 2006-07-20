@@ -3,9 +3,9 @@
 use Test::More tests => 1;
 
 BEGIN {
-	use_ok( 'PDBC' );
+	use_ok( 'JDBC' );
 }
 
-diag( "Testing PDBC $PDBC::VERSION, Perl $], $^X" );
+diag( "Testing JDBC $JDBC::VERSION, Perl $], $^X" );
 
 require "t/test_init.pl";

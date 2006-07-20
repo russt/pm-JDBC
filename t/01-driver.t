@@ -4,16 +4,16 @@ use Test::More tests => 4;
 
 BEGIN { require "t/test_init.pl" }
 
-use PDBC;
+use JDBC;
 
 print "CLASSPATH=$ENV{CLASSPATH}\n";
-PDBC->load_driver($::PDBC_DRIVER_CLASS);
+JDBC->load_driver($::JDBC_DRIVER_CLASS);
 pass("driver class loaded");
 
-my $timeout = PDBC->getLoginTimeout;
+my $timeout = JDBC->getLoginTimeout;
 ok defined $timeout, "getLoginTimeout";
 
-my $drivers_enumeration = PDBC->getDrivers;
+my $drivers_enumeration = JDBC->getDrivers;
 can_ok $drivers_enumeration, 'hasMoreElements';
 
 my @drivers;

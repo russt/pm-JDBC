@@ -1,7 +1,7 @@
 # perform various pre-test initializations
 
 # initialise variables describing the driver we'll test with
-# and setup CLASSPATH (which needs to be done before 'use PDBC')
+# and setup CLASSPATH (which needs to be done before 'use JDBC')
 
 use Carp;
 use File::Path;
@@ -10,14 +10,14 @@ use Cwd;
 my $dir = cwd;
 $dir =~ s:/t$::;
 
-$::PDBC_DRIVER_CLASS = "org.apache.derby.jdbc.EmbeddedDriver";
-$::PDBC_DRIVER_URL   = "jdbc:derby:derbydb;create=true";
-$::PDBC_DRIVER_JAR   = "$dir/drivers/db-derby-10.1.1.0.jar";
-@::PDBC_DRIVER_DBFILES = qw(derbydb derbydb.log);
-die "Driver $::PDBC_DRIVER_JAR not found" unless -s $::PDBC_DRIVER_JAR;
-rmtree \@::PDBC_DRIVER_DBFILES, 0;
+$::JDBC_DRIVER_CLASS = "org.apache.derby.jdbc.EmbeddedDriver";
+$::JDBC_DRIVER_URL   = "jdbc:derby:derbydb;create=true";
+$::JDBC_DRIVER_JAR   = "$dir/drivers/db-derby-10.1.1.0.jar";
+@::JDBC_DRIVER_DBFILES = qw(derbydb derbydb.log);
+die "Driver $::JDBC_DRIVER_JAR not found" unless -s $::JDBC_DRIVER_JAR;
+rmtree \@::JDBC_DRIVER_DBFILES, 0;
 
-$ENV{CLASSPATH} = join ":", $::PDBC_DRIVER_JAR, split /:/, $ENV{CLASSPATH}, -1;
+$ENV{CLASSPATH} = join ":", $::JDBC_DRIVER_JAR, split /:/, $ENV{CLASSPATH}, -1;
 
 # make Carp more verbose
 
