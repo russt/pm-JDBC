@@ -9,11 +9,11 @@ JDBC - Perl 5 interface to Java JDBC (via Inline::Java)
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 =head1 SYNOPSIS
 
@@ -105,6 +105,13 @@ my @classes = (qw(
 
 warn "studying classes\n" if $debug;
 study_classes(\@classes, 'main');
+
+#Fix a long-standing bug due to changes in @ISA caching introduced in perl 5.10.0.
+#See  http://perldoc.perl.org/perl5100delta.html (search for "mro").
+#RT 1/5/14.
+#
+#force a reset of the @ISA cache after injecting java.sql.DriverManager, which we inherit from:
+@ISA = @ISA;
 
 # Driver => java.sql.Driver, RowSet => javax.sql.RowSet etc
 my %class_base   = map { m/^(.*\.(\w+))$/ or die; (  $2  => $1) } @classes;
